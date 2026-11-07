@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpa-analyzer"
+version = "1.0.0"
+description = "Command-line tool that turns a CSV of exam scores into grades, GPA/CGPA, degree classes and course statistics."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []  # standard library only
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+gpa-analyzer = "gpa_analyzer.cli:main"
+
+[tool.setuptools]
+packages = ["gpa_analyzer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "gpa_analyzer"]
+pythonpath = ["."]
+addopts = "--doctest-modules --ignore=gpa_analyzer/__main__.py"
